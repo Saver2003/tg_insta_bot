@@ -1,3 +1,11 @@
+// Получить последние N заявок
+export async function getLeads(limit: number = 10): Promise<Lead[]> {
+	const result = await pool.query(
+		`SELECT * FROM leads ORDER BY created_at DESC LIMIT $1`,
+		[limit]
+	);
+	return result.rows;
+}
 // SQL queries
 // ...будет реализовано позже
 import { pool } from './pool';

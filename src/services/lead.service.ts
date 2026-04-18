@@ -1,3 +1,8 @@
+import { getLeads } from '../db/queries';
+
+export async function fetchLeads(limit: number = 10) {
+	return getLeads(limit);
+}
 // Lead service
 // ...будет реализовано позже
 import { insertLead } from '../db/queries';

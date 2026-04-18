@@ -52,7 +52,7 @@ const leadWizard = new Scenes.WizardScene<LeadWizardContext>(
 		const saved = await saveLead(lead);
 		await ctx.reply(
 			`Ваша заявка отправлена!\n\n` +
-			`id: ${saved.id}\ntelegram_id: ${saved.telegram_id}\nusername: ${saved.username}\nniche: ${saved.niche}\ngoal: ${saved.goal}\ninstagram: ${saved.instagram}\nsource: ${saved.source}\ncreated_at: ${saved.created_at}`,
+			   `ID: ${saved.id}\nTelegram ID: ${saved.telegram_id}\nИмя: ${saved.username}\nНиша: ${saved.niche}\nЦель: ${saved.goal}\nInstagram: ${saved.instagram}\nИсточник: ${saved.source}\nСоздано: ${saved.created_at}`,
 			Markup.removeKeyboard()
 		);
 		return ctx.scene.leave();
