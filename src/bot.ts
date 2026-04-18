@@ -49,19 +49,19 @@ bot.hears('👉 Оставить заявку', (ctx: LeadWizardContext) => {
 });
 
 // Кнопка "Посмотреть заявки" только для ADMIN_ID
-bot.hears('Посмотреть заявки', async (ctx: LeadWizardContext) => {
-       if (ctx.from?.id !== ADMIN_ID) return;
-       const leads = await fetchLeads(10);
-       if (!leads.length) {
-	       await ctx.reply('Заявок пока нет.');
-	       return;
-       }
-       let msg = 'Последние заявки:\n';
-       for (const lead of leads) {
-	       msg += `\nID: ${lead.id}\nИмя: ${lead.username}\nНиша: ${lead.niche}\nЦель: ${lead.goal}\nInstagram: ${lead.instagram}\nИсточник: ${lead.source}\nСоздано: ${lead.created_at}\n---`;
-       }
-       await ctx.reply(msg);
-});
+// bot.hears('Посмотреть заявки', async (ctx: LeadWizardContext) => {
+//        if (ctx.from?.id !== ADMIN_ID) return;
+//        const leads = await fetchLeads(10);
+//        if (!leads.length) {
+// 	       await ctx.reply('Заявок пока нет.');
+// 	       return;
+//        }
+//        let msg = 'Последние заявки:\n';
+//        for (const lead of leads) {
+// 	       msg += `\nID: ${lead.id}\nИмя: ${lead.username}\nНиша: ${lead.niche}\nЦель: ${lead.goal}\nInstagram: ${lead.instagram}\nИсточник: ${lead.source}\nСоздано: ${lead.created_at}\n---`;
+//        }
+//        await ctx.reply(msg);
+// });
 
 // Для ADMIN_ID всегда показываем клавиатуру с кнопкой "Посмотреть заявки"
 bot.on('message', (ctx: LeadWizardContext, next) => {
