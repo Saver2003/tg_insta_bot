@@ -14,6 +14,7 @@ app.get('/health', (_req, res) => {
 
 // Webhook endpoint
 app.post('/webhook', (req, res) => {
+    console.log('Received webhook update:', req.body);
 	bot.handleUpdate(req.body)
 		.then(() => res.sendStatus(200))
 		.catch((e) => {
