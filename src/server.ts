@@ -13,14 +13,23 @@ app.get('/health', (_req, res) => {
 });
 
 // Webhook endpoint
-app.post('/webhook', (req, res) => {
-    console.log('Received webhook update:', req.body);
-	bot.handleUpdate(req.body)
-		.then(() => res.sendStatus(200))
-		.catch((e) => {
-			console.error(e);
-			res.sendStatus(500);
-		});
+app.post('/webhook', async (req, res) => {
+	try {
+		const update = req.body;
+		// Проверяем, что это текстовое сообщение "hi"
+		if (
+			update.message &&
+			typeof update.message.text === 'string' &&
+			update.message.text.trim().toLowerCase() === 'hi'
+		) {
+			await bot.telegram.sendMessage(update.message.chat.id, 'привет');
+		}
+		await bot.handleUpdate(update);
+		res.sendStatus(200);
+	} catch (e) {
+		console.error(e);
+		res.sendStatus(500);
+	}
 });
 
 const PORT = process.env.PORT || 3000;
