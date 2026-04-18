@@ -14,7 +14,12 @@ app.get('/health', (_req, res) => {
 
 // Webhook endpoint
 app.post('/webhook', (req, res) => {
-	bot.handleUpdate(req.body, res);
+	bot.handleUpdate(req.body)
+		.then(() => res.sendStatus(200))
+		.catch((e) => {
+			console.error(e);
+			res.sendStatus(500);
+		});
 });
 
 const PORT = process.env.PORT || 3000;
