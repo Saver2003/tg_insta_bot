@@ -10,10 +10,9 @@ bot.start((ctx) => {
 });
 
 // Ответ на текстовое сообщение 'hi'
-bot.hears(/^hi$/i, (ctx) => {
-  ctx.reply('привет');
-});
+// bot.hears(/^hi$/i, (ctx) => {
+//   ctx.reply('привет');
+// });
 
-bot.launch();
 // Экспортируем для использования в других частях приложения
 export default bot;
