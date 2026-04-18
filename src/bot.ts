@@ -9,6 +9,11 @@ bot.start((ctx) => {
 	ctx.reply('Привет! Я минималистичный Telegram-бот.');
 });
 
+// Ответ на текстовое сообщение 'hi'
+bot.hears(/^hi$/i, (ctx) => {
+  ctx.reply('привет');
+});
+
 bot.launch();
 // Экспортируем для использования в других частях приложения
 export default bot;
