@@ -65,12 +65,12 @@ bot.hears('Посмотреть заявки', async (ctx: LeadWizardContext) =>
 
 // Для ADMIN_ID всегда показываем клавиатуру с кнопкой "Посмотреть заявки"
 bot.on('message', (ctx: LeadWizardContext, next) => {
-       if (ctx.from?.id === ADMIN_ID) {
+       if (ctx.from?.id === ADMIN_ID && ctx.message && 'text' in ctx.message && ctx.message.text !== 'Посмотреть заявки') {
 	       ctx.reply('Меню администратора', {
 		       reply_markup: {
 			       keyboard: [["👉 Оставить заявку"], ["Посмотреть заявки"]],
 			       resize_keyboard: true,
-			       one_time_keyboard: true
+			       one_time_keyboard: false
 		       }
 	       });
        }
